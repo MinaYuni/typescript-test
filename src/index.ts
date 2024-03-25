@@ -23,7 +23,12 @@ function updateTime() {
   currentTime = new Date();
   currentTime.setHours(currentTime.getHours() + hoursAdded);
   currentTime.setMinutes(currentTime.getMinutes() + minutesAdded);
-  timeText.textContent = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`;
+
+  const hour = currentTime.getHours().toString().padStart(2, "0");
+  const minute = currentTime.getMinutes().toString().padStart(2, "0");
+  const sec = currentTime.getSeconds().toString().padStart(2, "0");
+
+  timeText.textContent = `${hour}:${minute}:${sec}`;
 }
 
 /**
@@ -32,15 +37,15 @@ function updateTime() {
 function timeEdit() {
   if (!hourIsEdited && !minuteIsEdited) {
     hourIsEdited = true;
-    modeText.textContent = "Mode : Hour";
+    modeText.textContent = "Hour";
   } else if (hourIsEdited && !minuteIsEdited) {
     hourIsEdited = false;
     minuteIsEdited = true;
-    modeText.textContent = "Mode : Minute";
+    modeText.textContent = "Minute";
   } else {
     hourIsEdited = false;
     minuteIsEdited = false;
-    modeText.textContent = "Mode : Time";
+    modeText.textContent = "Time";
   }
   updateTime();
 }
