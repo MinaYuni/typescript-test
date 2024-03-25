@@ -1,6 +1,6 @@
 import "./index.css";
 
-let watchContainer = document.querySelector(".watch");
+let bodyContainer = document.querySelector("body");
 let timeText = document.querySelector(".time");
 let modeText = document.querySelector(".currentMode");
 let modeButton = document.querySelector(".mode");
@@ -61,6 +61,7 @@ function increaseTime() {
  */
 function changeLightMode() {
   isLightMode = !isLightMode;
+  bodyContainer.classList.toggle("dark-mode");
 }
 
 /**
